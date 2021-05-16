@@ -1,5 +1,8 @@
-import React from 'react';
-import { Form, Input, Select, Checkbox, Button, AutoComplete } from 'antd';
+import React, {useState, useEffect} from 'react';
+import {Form, Input, Select, Checkbox, Button, AutoComplete, notification} from 'antd';
+import {login, register} from "../redux/actions/userActions";
+import {useDispatch, useSelector} from "react-redux";
+import {useHistory} from "react-router";
 const { Option } = Select;
 
 const formItemLayout = {
@@ -33,25 +36,31 @@ const tailFormItemLayout = {
     },
 };
 
-const Register = () => {
-    const [form] = Form.useForm();
+const RegisterPage = () => {
+    const dispatch = useDispatch()
+    const history = useHistory()
 
-    const onFinish = (values) => {
-        console.log('Received values of form: ', values);
+    const [form] = Form.useForm();
+    const userRegister = useSelector(state => state.userLogin)
+    const {userInfo, loading, error} = userRegister
+
+    const onFinish = ({name, email, password}) => {
+        dispatch(register(name, email, password))
+        const args = {
+            message: error ? error : "User created!",
+            duration: 3,
+        };
+        notification.open(args);
+    };
+    const onFinishFailed = (errorInfo) => {
+        console.log('Failed:', errorInfo);
     };
 
-    const prefixSelector = (
-        <Form.Item name="prefix" noStyle>
-            <Select
-                style={{
-                    width: 70,
-                }}
-            >
-                <Option value="380">380</Option>
-                <Option value="380">380</Option>
-            </Select>
-        </Form.Item>
-    );
+    useEffect(() => {
+        if (userInfo) {
+            history.push('/')
+        }
+    }, [history, userInfo])
 
     return (
         <Form
@@ -59,6 +68,7 @@ const Register = () => {
             form={form}
             name="register"
             onFinish={onFinish}
+            onFinishFailed={onFinishFailed}
             initialValues={{
                 residence: ['zhejiang', 'hangzhou', 'xihu'],
                 prefix: '380',
@@ -121,7 +131,7 @@ const Register = () => {
             </Form.Item>
 
             <Form.Item
-                name="nickname"
+                name="name"
                 label="Nickname"
                 tooltip="What do you want others to call you?"
                 rules={[
@@ -133,24 +143,6 @@ const Register = () => {
                 ]}
             >
                 <Input />
-            </Form.Item>
-
-            <Form.Item
-                name="phone"
-                label="Phone Number"
-                rules={[
-                    {
-                        required: true,
-                        message: 'Please input your phone number!',
-                    },
-                ]}
-            >
-                <Input
-                    addonBefore={prefixSelector}
-                    style={{
-                        width: '100%',
-                    }}
-                />
             </Form.Item>
 
             <Form.Item
@@ -177,4 +169,4 @@ const Register = () => {
     );
 };
 
-export default Register
+export default RegisterPage
