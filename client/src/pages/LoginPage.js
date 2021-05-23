@@ -30,7 +30,6 @@ const LoginPage = () => {
 
     const onFinish = ({email, password}) => {
         dispatch(login(email, password))
-        openNotification("You are logged in")
     };
 
     const onFinishFailed = (errorInfo) => {
