@@ -136,7 +136,7 @@ const App = () => {
                                     </Menu.Item>
                                 </>}
                             <Menu.Item key="4" onClick={showModal}><UserAddOutlined/>
-                                Знайшли помилку?
+                                Написати відгук?
                             </Menu.Item>
                         </Menu>
                     </Row>
