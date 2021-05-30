@@ -11,8 +11,8 @@ const Navbar = () => {
     const {userInfo, loading, error} = userLogin
     return (
         <div>
-            <div className="logo"><Title level={4} className="dis">MADE YATSIY V.M.</Title></div>
-            <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
+            <div className="logo"></div>
+            <Menu style={{background: "cadetblue"}} mode="inline" defaultSelectedKeys={['1']}>
                 <Menu.Item key="1" icon={<HomeOutlined />}>
                     <NavLink to="/">
                         Про сайт

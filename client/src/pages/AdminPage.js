@@ -69,10 +69,10 @@ const AdminPage = () => {
     return (
         <Tabs defaultActiveKey="1" onChange={callback}>
             <TabPane tab="Користувачі" key="1">
-                <Title>Перед початком використання, прочитайте документацію за <NavLink
-                    to="/documentation">посиланням</NavLink></Title>
             </TabPane>
             <TabPane tab="Парсинг файла" key="2">
+                <Title>Перед початком використання, прочитайте документацію за <NavLink
+                    to="/documentation">посиланням</NavLink></Title>
                 <Form {...layout} name="nest-messages" onFinish={onFinish}>
                     <Form.Item name={['token']} label="TOKEN" rules={[{required: true}]}>
                         <Input/>

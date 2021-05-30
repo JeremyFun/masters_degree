@@ -116,7 +116,7 @@ const App = () => {
     return (
         <BrowserRouter>
             <Layout>
-                <Sider trigger={null} collapsible collapsed={collapsed}>
+                <Sider trigger={null} collapsible collapsed={collapsed} style={{background: "cadetblue"}}>
                     <Navbar/>
                 </Sider>
                 <Layout className="site-layout">
