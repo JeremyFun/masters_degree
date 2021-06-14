@@ -19,6 +19,7 @@ import emailjs from "emailjs-com"
 import TableKafedra from "./pages/TableKafedra";
 import DocumentationPage from "./pages/DocumentationPage";
 import AdminPage from "./pages/AdminPage";
+import UserEditScreen from "./components/UserEditScreen";
 
 const {Header, Sider, Content} = Layout;
 
@@ -171,6 +172,7 @@ const App = () => {
                             <Route path="/adminMenu">
                                 <AdminPage/>
                             </Route>
+                            <Route path="/admin/user/:id/edit" component={UserEditScreen} exact />
                             <Col span={12} offset={4}>
                                 <Route path="/register" exact>
                                     <RegisterPage/>

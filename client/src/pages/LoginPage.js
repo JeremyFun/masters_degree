@@ -1,10 +1,11 @@
 import {Form, Input, Button, Checkbox, notification} from 'antd';
 import {toast, ToastContainer} from "react-toastify";
-import {BrowserRouter, useHistory} from "react-router-dom";
+import {BrowserRouter, NavLink, useHistory} from "react-router-dom";
 import React, {useEffect, useMemo} from "react";
 import {login} from "../redux/actions/userActions";
 import {useDispatch, useSelector} from "react-redux";
 import {SmileOutlined} from "@ant-design/icons";
+import Title from "antd/es/typography/Title";
 
 const layout = {
     labelCol: {
@@ -76,12 +77,12 @@ const LoginPage = () => {
                 onFinishFailed={onFinishFailed}
             >
                 <Form.Item
-                    label="Email"
+                    label="Емейл"
                     name="email"
                     rules={[
                         {
                             required: true,
-                            message: 'Please input your email!',
+                            message: 'Введіть правильний емейл!',
                         },
                     ]}
                 >
@@ -89,12 +90,12 @@ const LoginPage = () => {
                 </Form.Item>
 
                 <Form.Item
-                    label="Password"
+                    label="Пароль"
                     name="password"
                     rules={[
                         {
                             required: true,
-                            message: 'Please input your password!',
+                            message: 'Введіть правильний пароль!',
                         },
                     ]}
                 >
@@ -102,13 +103,14 @@ const LoginPage = () => {
                 </Form.Item>
 
                 <Form.Item {...tailLayout} name="remember" valuePropName="checked">
-                    <Checkbox>Remember me</Checkbox>
+                    <Checkbox>Запамятати мене</Checkbox>
                 </Form.Item>
 
                 <Form.Item {...tailLayout}>
-                    <Button type="primary" htmlType="submit">
-                        Submit
+                    <div className="d-flex"><Button type="primary" htmlType="submit">
+                        Увійти
                     </Button>
+                        <Title level={5}>&nbsp;&nbsp;&nbsp;Якщо у вас немає акаунту пройдіть <NavLink to="/register">Реєєстрацію</NavLink></Title></div>
                 </Form.Item>
                 <ToastContainer
                     position="top-right"

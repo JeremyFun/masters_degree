@@ -21,6 +21,18 @@ app.use(express.json())
 app.use('/api/users', userRoutes)
 
 const __dirname = path.resolve()
+app.use('/uploads', express.static(path.join(__dirname, '/uploads')))
+
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, '/client/build')))
+
+    app.get('*', (req, res) =>
+        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html')))
+} else {
+    app.get('/', (req, res) => {
+        res.send('API is running')
+    })
+}
 //
 // if (process.env.NODE_ENV === 'production') {
 //     app.use(express.static(path.join(__dirname, '/client/build')))
@@ -36,19 +48,19 @@ const __dirname = path.resolve()
 app.use(notFound)
 app.use(errorHandler)
 
-const CLIENT_BUILD_PATH = path.join(__dirname, "../client/build");
+// const CLIENT_BUILD_PATH = path.join(__dirname, "../client/build");
 
 // Static files
-app.use(express.static(CLIENT_BUILD_PATH));
+// app.use(express.static(CLIENT_BUILD_PATH));
 
 // Server React Client
-app.get("/", function(req, res) {
-    res.sendFile(path.join(CLIENT_BUILD_PATH , "index.html"));
-});
-
-app.use(function(req, res) {
-    res.sendFile(path.join(__dirname, '../client','build','index.html'));
-});
+// app.get("/", function(req, res) {
+//     res.sendFile(path.join(CLIENT_BUILD_PATH , "index.html"));
+// });
+//
+// app.use(function(req, res) {
+//     res.sendFile(path.join(__dirname, '../client','build','index.html'));
+// });
 
 const PORT = process.env.PORT || 5000
 

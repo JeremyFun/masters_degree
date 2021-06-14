@@ -3,6 +3,7 @@ import {Button, Form, Input, notification, Tabs, Typography} from 'antd';
 import {NavLink, useHistory} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {SmileOutlined} from "@ant-design/icons";
+import EditableTable from "../components/EditableUser";
 
 const AdminPage = () => {
     const history = useHistory()
@@ -69,6 +70,7 @@ const AdminPage = () => {
     return (
         <Tabs defaultActiveKey="1" onChange={callback}>
             <TabPane tab="Користувачі" key="1">
+                <EditableTable />
             </TabPane>
             <TabPane tab="Парсинг файла" key="2">
                 <Title>Перед початком використання, прочитайте документацію за <NavLink
@@ -86,9 +88,6 @@ const AdminPage = () => {
                         </Button>
                     </Form.Item>
                 </Form>
-            </TabPane>
-            <TabPane tab="Tab 3" key="3">
-                Content of Tab Pane 3
             </TabPane>
         </Tabs>
     )

@@ -1,5 +1,7 @@
-import React from "react"
+import React, {useEffect} from "react"
 import { BackTop } from 'antd';
+import {useSelector} from "react-redux";
+import {useHistory} from "react-router-dom";
 
 const TableInstitute = () => {
     const style = {
@@ -12,6 +14,18 @@ const TableInstitute = () => {
         textAlign: 'center',
         fontSize: 14,
     };
+
+    const history = useHistory()
+
+    const userLogin = useSelector(state => state.userLogin)
+    const {userInfo, loading, error} = userLogin
+
+    useEffect(() => {
+        if (!userInfo) {
+            history.push('/login')
+        }
+    }, [history, userInfo])
+
     return (
         <div style={{overflow: "scroll", height: "80vh"}}>
             <iframe

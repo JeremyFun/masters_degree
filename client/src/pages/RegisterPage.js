@@ -77,15 +77,15 @@ const RegisterPage = () => {
         >
             <Form.Item
                 name="email"
-                label="E-mail"
+                label="Емейл"
                 rules={[
                     {
                         type: 'email',
-                        message: 'The input is not valid E-mail!',
+                        message: 'Ви ввели не правильний емейл!',
                     },
                     {
                         required: true,
-                        message: 'Please input your E-mail!',
+                        message: 'Введіть ваш емейл!',
                     },
                 ]}
             >
@@ -94,11 +94,11 @@ const RegisterPage = () => {
 
             <Form.Item
                 name="password"
-                label="Password"
+                label="Пароль"
                 rules={[
                     {
                         required: true,
-                        message: 'Please input your password!',
+                        message: 'Введіть ваш пароль!',
                     },
                 ]}
                 hasFeedback
@@ -108,13 +108,13 @@ const RegisterPage = () => {
 
             <Form.Item
                 name="confirm"
-                label="Confirm Password"
+                label="Повторіть пароль"
                 dependencies={['password']}
                 hasFeedback
                 rules={[
                     {
                         required: true,
-                        message: 'Please confirm your password!',
+                        message: 'Введіть правильний пароль!!',
                     },
                     ({ getFieldValue }) => ({
                         validator(_, value) {
@@ -132,12 +132,12 @@ const RegisterPage = () => {
 
             <Form.Item
                 name="name"
-                label="Nickname"
+                label="Імя"
                 tooltip="What do you want others to call you?"
                 rules={[
                     {
                         required: true,
-                        message: 'Please input your nickname!',
+                        message: 'Введіть ваше імя!',
                         whitespace: true,
                     },
                 ]}
@@ -157,12 +157,12 @@ const RegisterPage = () => {
                 {...tailFormItemLayout}
             >
                 <Checkbox>
-                    I have read the <a href="">agreement</a>
+                    Я погоджуюся з <a href="">інструкцією</a>
                 </Checkbox>
             </Form.Item>
             <Form.Item {...tailFormItemLayout}>
                 <Button type="primary" htmlType="submit">
-                    Register
+                    Реєстрація
                 </Button>
             </Form.Item>
         </Form>

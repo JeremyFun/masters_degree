@@ -1,8 +1,20 @@
-import React from "react"
+import React, {useEffect} from "react"
 import {Tabs, TabPane} from "antd";
+import {useSelector} from "react-redux";
+import {useHistory} from "react-router-dom";
 
 const TableKafedra = () => {
     const { TabPane } = Tabs;
+    const userLogin = useSelector(state => state.userLogin)
+    const {userInfo, loading, error} = userLogin
+
+    const history = useHistory()
+    useEffect(() => {
+        if (!userInfo) {
+            history.push('/login')
+        }
+    }, [history, userInfo])
+
     return (
         <>
             <Tabs tabPosition={"top"}>
