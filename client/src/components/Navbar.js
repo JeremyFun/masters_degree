@@ -28,7 +28,7 @@ const Navbar = () => {
                         Таблиця кафедри
                     </NavLink>
                 </Menu.Item>
-                {userInfo ? <>
+                {userInfo ? userInfo.isAdmin && <>
                     <Menu.Item key="4" icon={<UserSwitchOutlined/>}>
                         <NavLink to="/adminMenu">
                             Адмін меню

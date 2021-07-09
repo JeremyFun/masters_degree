@@ -29,7 +29,7 @@ const UserEditScreen = ({ match, history }) => {
     useEffect(() => {
         if(successUpdate) {
             dispatch({type: USER_UPDATE_RESET})
-            history.push('/admin/userlist')
+            history.push('/adminMenu')
         }
         if (!user.name || user._id !== userId) {
             dispatch(getUserProfile(userId))
